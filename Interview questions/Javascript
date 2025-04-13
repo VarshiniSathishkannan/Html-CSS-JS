@@ -1,0 +1,122 @@
+What is Javascipt and the role of Javascipt engine ?
+
+HTML is for displaying static content, CSS is for styling purpose and javascript is used for dynamically changing the content
+
+All browsers has Javascipt engine, which executes the javascript code.
+
+Scopes in Javascript ?
+
+global scope 
+function scope 
+block scope
+
+function val() {
+  variable = 10; // no var/let/const = becomes global (bad practice)
+}
+val();
+console.log(variable);
+
+Hoisting in JS
+
+Hoisting is JavaScript’s default behavior of moving declarations to the top of their scope (before code is executed).
+
+This applies to:
+
+Variable declarations
+
+Function declarations
+
+But only the declarations are hoisted, not the initializations (assignments).
+
+let and const Are Different
+
+console.log(b); // ❌ ReferenceError
+let b = 10;
+Variables declared with let and const are also hoisted, but they’re not initialized — they go into a "temporal dead zone" from the start of the block until the declaration is encountered.
+
+Variables in JS:
+
+var is function scoped
+let is block scoped
+const is block scoped
+
+Datatypes in JS:
+Primitive (Single values) = Numbers, Strings, Booleans, Undefined, Null
+Non-Primitive (Multiple values) = Object, Array, Function, Date, RegExp
+
+null vs undefined
+
+let user = null;
+console.log(user); // null
+
+// You might do this to say: "No user is logged in right now"
+You set null when:
+
+You want to explicitly clear a variable
+
+You’re preparing for a future object or value
+
+let a;
+console.log(a); // undefined (you declared but didn't assign)
+
+typeof undefined // "undefined"
+typeof null      // "object" ❗ (historical bug in JS)
+
+typeof is an operator, not a function. This is an unary operator, takes only one value
+
+unary operators:
+typeof, delete, void, !, +, -, ++, --, ~
+
+let age = 18;
+let canVote = age >= 18 ? "Yes" : "No";
+
+console.log(canVote); // "Yes"
+
+Short Circuit Evaluation:
+
+false && console.log("Won't run"); // nothing happens
+
+let name = inputName || "Guest";
+
+Loose Equality Vs Strict Equality:
+
+1 == '1' returns True due to type conversion 
+
+1 === '1' returns False Does not perform type conversion
+
+Spread and rest operator
+
+const array = [1,2,3];
+console.log(...array)
+
+expand or spread iterables into individual elements
+
+Copying Arrays
+
+const arr1 = [1, 2, 3];
+const arr2 = [...arr1];
+
+console.log(arr2); // [1, 2, 3]
+
+Merging Arrays
+
+const a = [1, 2];
+const b = [3, 4];
+const combined = [...a, ...b];
+
+console.log(combined); // [1, 2, 3, 4]
+
+Spreading into Function Arguments
+
+function sum(x, y, z) {
+  return x + y + z;
+}
+
+const numbers = [1, 2, 3];
+console.log(sum(...numbers)); // 6
+
+Rest operator
+
+const [first, ...rest] = [1, 2, 3, 4];
+console.log(first); // 1
+console.log(rest);  // [2, 3, 4]

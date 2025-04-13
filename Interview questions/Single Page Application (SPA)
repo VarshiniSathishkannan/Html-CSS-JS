@@ -1,0 +1,33 @@
+A Single Page Application is a web app that loads a single HTML page once, and then dynamically updates the content without reloading the entire page.
+
+Instead of loading a brand-new page every time you click something, it fetches only the data it needs and updates the page in the browser using JavaScript.
+
+Imagine your favorite app — like Gmail, Twitter, or Spotify Web. When you click around:
+
+The URL changes
+
+The content changes
+
+But the page doesn’t reload — there’s no flash or full refresh
+
+That’s an SPA.
+
+📄 Single HTML Page	Loads one HTML file (index.html), and the rest happens with JavaScript
+🔁 No Full Page Reloads	Only parts of the page update, not the whole thing
+⚡ Fast & Smooth UX	Feels like a native app, very responsive
+🌐 Uses AJAX / Fetch	To request data without refreshing
+📦 Often Built with	React, Angular, Vue, Svelte, etc.
+
+📊 SPA vs Traditional Web App
+Traditional Web App	Single Page App (SPA)
+🌐 Full Page Reload	Yes (every action)	No
+🧠 Page Logic	Mostly on the server	Mostly in the browser
+⚙️ Technologies	HTML + CSS + server	HTML + CSS + JS frameworks
+🔗 Navigation	Requests new HTML pages	JavaScript updates the page
+
+⚠️ Any downsides?
+SPAs can be heavier upfront (initial load is bigger)
+
+They need good JavaScript and routing setups
+
+SEO (search engine optimization) can be trickier, though modern tools like Next.js help a lot

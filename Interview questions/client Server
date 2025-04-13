@@ -1,0 +1,63 @@
+Client side and Server side ?
+
+Client-Side
+This is everything that happens in the user's browser (the "client").
+
+Examples:
+Clicking a button and seeing a popup
+
+Animations on a page
+
+Form validation (e.g., showing an error if a field is empty)
+
+Loading new content without refreshing (like on Instagram or Twitter)
+
+Client-Side Technologies:
+HTML, CSS, JavaScript
+
+Frameworks like React, Vue, Angular
+
+Runs in your browser
+
+Why use client-side?
+Faster interactions (no need to talk to the server every time)
+
+More responsive UI
+
+Great for single-page apps (SPAs)
+
+Server-Side
+This is everything that happens on a web server, behind the scenes.
+
+Examples:
+Logging into your account
+
+Saving form data to a database
+
+Getting personalized recommendations
+
+Serving pages or data to the client
+
+Server-Side Technologies:
+Node.js, Python (Django/Flask), PHP, Ruby, Java, Go
+
+Databases like MySQL, MongoDB, PostgreSQL
+
+Logic runs on a remote server
+
+Why use server-side?
+
+Secure operations (like handling passwords)
+
+Access to databases
+
+Dynamic content (like showing your personal dashboard)
+
+🤝 How They Work Together
+When you visit a website:
+
+The server sends HTML/CSS/JS files to your browser.
+
+The client displays the page and might use JavaScript to make it interactive.
+
+If you need data (e.g., your messages), JavaScript makes a request to the server, which responds with the data.

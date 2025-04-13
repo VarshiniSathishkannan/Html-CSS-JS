@@ -1,0 +1,114 @@
+The HTML element is everything from the start tag to the end tag:
+
+ Some HTML elements have no content (like the <br> element). These elements are called empty elements. Empty elements do not have an end tag! 
+
+ The <!DOCTYPE> declaration represents the document type, and helps browsers to display web pages correctly.
+
+It must only appear once, at the top of the page (before any HTML tags). 
+
+ Some HTML elements will display correctly, even if you forget the end tag: However, never rely on this! Unexpected results and errors may occur if you forget the end tag! 
+
+ HTML tags are not case sensitive: <P> means the same as <p>. 
+
+HTML Attributes
+    All HTML elements can have attributes
+    Attributes provide additional information about elements
+    Attributes are always specified in the start tag
+    Attributes usually come in name/value pairs like: name="value" 
+
+Each parameter (red, green, and blue) defines the intensity of the color with a value between 0 and 255.
+
+This means that there are 256 x 256 x 256 = 16777216 possible colors!
+    
+    For example, rgb(255, 0, 0) is displayed as red, because red is set to its highest value (255), and the other two (green and blue) are set to 0.
+    
+    Another example, rgb(0, 255, 0) is displayed as green, because green is set to its highest value (255), and the other two (red and blue) are set to 0.
+    
+    To display black, set all color parameters to 0, like this: rgb(0, 0, 0).
+    
+    To display white, set all color parameters to 255, like this: rgb(255, 255, 255).
+
+    Shades of gray are often defined using equal values for all three parameters:
+
+    rgb(60,60,60)
+    rgb(120,120,120)
+
+RGBA color values are an extension of RGB color values with an Alpha channel - which specifies the opacity for a color.
+
+An RGBA color value is specified with:
+
+rgba(red, green, blue, alpha)
+
+The alpha parameter is a number between 0.0 (fully transparent) and 1.0 (not transparent at all):
+
+CSS can be added to HTML documents in 3 ways:
+
+Inline - by using the style attribute inside HTML elements
+Internal - by using a <style> element in the <head> section
+External - by using a <link> element to link to an external CSS file
+
+<p> is a block-level element, which stretches to fill the width of its container. Changing it to inline-block fixes that.
+
+to show border only for the content
+p.inline-border {
+  display: inline-block;
+  border: 1px solid black;
+  padding: 4px;
+}
+
+The title should describe the content and the meaning of the page.
+
+The page title is very important for search engine optimization (SEO). The text is used by search engine algorithms to decide the order when listing pages in search results.
+
+The <title> element:
+
+defines a title in the browser toolbar
+provides a title for the page when it is added to favorites
+displays a title for the page in search engine-results
+So, try to make the title as accurate and meaningful as possible! 
+
+The two most common display values are block and inline.
+
+Note: An inline element cannot contain a block-level element!
+
+HTML elements can belong to more than one class.
+
+To define multiple classes, separate the class names with a space, e.g. <div class="city main">
+
+An HTML iframe is used to display a web page within a web page.
+
+https://www.w3schools.com/html/html_iframe.asp
+
+The <head> element is a container for metadata (data about data)
+The <head> element is placed between the <html> tag and the <body> tag
+The <title> element is required and it defines the title of the document
+The <style> element is used to define style information for a single document
+The <link> tag is most often used to link to external style sheets
+The <meta> element is typically used to specify the character set, page description, keywords, author of the document, and viewport settings
+The <script> element is used to define client-side JavaScripts
+The <base> element specifies the base URL and/or target for all relative URLs in a page
+
+
+The max-width property is used to set the maximum width of an element.
+
+The max-width can be specified in length values, like px, cm, etc., or in percent (%) of the containing block, or set to none (this is default. Means that there is no maximum width).
+
+The problem with the <div> above occurs when the browser window is smaller than the width of the element (500px). The browser then adds a horizontal scrollbar to the page.
+
+In this situation, using max-width will improve the browser's handling of small windows.
+
+CSS Box model:
+Explanation of the different parts:
+
+Content - The content of the box, where text and images appear
+Padding - Clears an area around the content. The padding is transparent
+Border - A border that goes around the padding and content
+Margin - Clears an area outside the border. The margin is transparent
+
+JavaScript is one of the 3 languages all web developers must learn:
+
+   1. HTML to define the content of web pages
+
+   2. CSS to specify the layout of web pages
+
+   3. JavaScript to program the behavior of web pages

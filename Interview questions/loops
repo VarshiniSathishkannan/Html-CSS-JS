@@ -1,0 +1,45 @@
+// 5 types of loops:
+// for
+// while
+// do while
+// for of
+// for in 
+
+
+for (let i = 0; i < 5; i++) {
+    text += "The number is " + i + "<br>";
+}
+
+// The JavaScript for in statement loops through the properties of an Object: Iterates through keys from which we can get the values 
+
+const person = {fname:"John", lname:"Doe", age:25};
+
+let t = "";
+for (let x in person) {
+  t += person[x]; 
+}
+
+// The JavaScript for of statement loops through the values of an iterable object.
+
+// It lets you loop over iterable data structures such as Arrays, Strings, Maps, NodeLists, and more:
+
+const cars = ["BMW", "Volvo", "Mini"];
+
+let text = "";
+for (let x of cars) {
+  text += x;
+}
+
+// while loop
+
+
+while (cars[i]) {
+  text += cars[i];
+  i++;
+}
+
+do{
+  text += cars[i];
+  i++;
+}while(cars[i]);
+

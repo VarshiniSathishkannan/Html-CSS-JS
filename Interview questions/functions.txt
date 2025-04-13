@@ -1,0 +1,174 @@
+Function Declarations: Traditional function with hoisting.
+
+Function Expressions: Anonymous functions assigned to variables.
+
+Arrow Functions: Shorter syntax for functions, with lexical this.
+
+Anonymous Functions: Functions without names, commonly used for callbacks.
+
+Callback function: Function passed as a parameter to another function, the other function is called as a higher order function
+
+Higher Order Function: Takes one or more arguments(callback functions) or returns a function as a result
+
+IIFE (Immediately Invoked Function Expression): Functions that run immediately after creation.
+
+Constructor Functions: Functions that create objects using new.
+
+Generator Functions: Functions that can pause and resume with yield.
+
+Async Functions: Functions that return a Promise and allow for await syntax.
+
+Method Functions: Functions stored as properties of objects.
+
+(Named Functions)
+This is the traditional way to define a function. It is declared with the function keyword and can be called before its declaration due to hoisting.
+
+function greet(name) {
+  console.log(`Hello, ${name}!`);
+}
+
+greet("Alice"); // Output: Hello, Alice!
+
+(Anonymous Functions)
+
+const greet = function(name) {
+  console.log(`Hello, ${name}!`);
+};
+
+greet("Bob"); // Output: Hello, Bob!
+
+(Arrow function)
+
+const hello = () => {
+    return "Hello World!";
+  }
+
+const hello = () => "Hello World!";
+
+const hello = (val) => "Hello " + val;
+
+(Callback Functions)
+
+Anonymous Functions (Typically used as Callback Functions)
+An anonymous function is a function that is not named and is often used in situations where a function is needed temporarily, like a callback.
+
+setTimeout(function() {
+  console.log("This message is displayed after 2 seconds.");
+}, 2000);
+
+Immediately Invoked Function Expressions (IIFE)
+
+(function() {
+  console.log("This function runs immediately!");
+})(); // Output: This function runs immediately!
+
+(Constructor Functions)
+
+Constructor functions are used to create objects. They are called with the new keyword, and they typically follow the PascalCase naming convention (e.g., Person). Before the introduction of classes in ES6 (ECMAScript 2015), JavaScript only had constructor functions as a way to create object templates and instantiate objects. They function as regular functions that are used with the new keyword to create objects.
+
+function Person(name, age) {
+  this.name = name;
+  this.age = age;
+  this.greet = function() {
+    console.log(`Hello, my name is ${this.name} and I am ${this.age} years old.`);
+  };
+}
+
+const john = new Person("John", 30);
+john.greet(); // Output: Hello, my name is John and I am 30 years old.
+
+Generator Functions
+
+Generator functions are defined with an asterisk (*) and use the yield keyword to pause and resume the function execution. They return a generator object, which can be iterated over.
+
+Instead of calculating the entire Fibonacci sequence up front, you can generate each value lazily:
+
+javascript
+Copy
+Edit
+function* fibonacci() {
+  let [a, b] = [0, 1];
+  while (true) {
+    yield a;
+    [a, b] = [b, a + b];
+  }
+}
+
+const gen = fibonacci();
+console.log(gen.next().value); // 0
+console.log(gen.next().value); // 1
+console.log(gen.next().value); // 1
+console.log(gen.next().value); // 2
+console.log(gen.next().value); // 3
+
+How yield Works:
+When a generator function is called, it does not run immediately. Instead, it returns a generator object.
+
+The generator object can then be iterated over using the next() method.
+
+Each time the next() method is called on the generator, the function runs until it encounters a yield statement.
+
+When yield is encountered, the generator pauses its execution and returns the value passed to yield to the caller.
+
+The generator function’s execution can then be resumed later, continuing from where it left off after the yield statement.
+
+function* stateMachine() {
+  let state = 'start';
+  while (true) {
+    if (state === 'start') {
+      state = yield 'State is start';
+    } else if (state === 'middle') {
+      state = yield 'State is middle';
+    } else {
+      state = yield 'State is end';
+    }
+  }
+}
+
+const sm = stateMachine();
+console.log(sm.next().value); // "State is start"
+console.log(sm.next('middle').value); // "State is middle"
+console.log(sm.next('end').value); // "State is end"
+
+Example: Infinite Sequence of Natural Numbers
+javascript
+Copy
+Edit
+function* naturalNumbers() {
+  let n = 1;
+  while (true) {
+    yield n++;
+  }
+}
+
+const gen = naturalNumbers();
+console.log(gen.next().value); // 1
+console.log(gen.next().value); // 2
+console.log(gen.next().value); // 3
+
+Async Functions 
+
+async function fetchData() {
+  let response = await fetch("https://jsonplaceholder.typicode.com/posts");
+  let data = await response.json();
+  console.log(data);
+}
+
+fetchData();
+
+await can only be used inside async functions.
+
+The fetchData function returns a Promise which resolves with the data fetched from the server
+
+Method Functions
+Functions defined as properties of objects are called methods. Methods are just regular functions but are bound to a specific object.
+
+const person = {
+  name: "Alice",
+  greet() {
+    console.log(`Hello, ${this.name}!`);
+  }
+};
+
+person.greet(); // Output: Hello, Alice!
+

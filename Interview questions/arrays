@@ -1,0 +1,136 @@
+
+JavaScript is a dynamically typed language, and its arrays are not typed like in some other languages (e.g., Java, C++, or TypeScript with strict settings).
+
+let fruits = ['a','b','c']
+
+const mixedArray = [42, "hello", true, null, { name: "Alice" }, [1, 2, 3], undefined];
+
+console.log(mixedArray);
+
+A dynamically typed language means that variables don't have a fixed data type. The type of a variable is determined at runtime (when the program is running), not when the program is compiled.
+
+In contrast, a statically typed language requires you to declare the type of a variable before you use it, and this type can’t change.
+
+Potential for runtime errors: Since types aren’t strictly enforced, you might get runtime errors when trying to perform operations on incompatible types (like adding a number to a string).
+
+let arr = [1, 2, 3];
+
+1. Mutating Methods (Methods that modify the original array)
+
+arr.push(4); // arr becomes [1, 2, 3, 4]
+
+arr.pop(); // arr becomes [1, 2]
+
+arr.shift(); // arr becomes [2, 3]
+
+arr.unshift(0); // arr becomes [0, 1, 2, 3]
+
+arr.sort();
+
+arr.reverse();
+
+arr.fill(0); // arr becomes [0, 0, 0]
+
+array.splice(start, deleteCount, item1, item2, ...);
+
+let arr = [1, 2, 3, 4];
+arr.splice(2, 1, 5, 6); // arr becomes [1, 2, 5, 6, 4]
+
+2. Non-Mutating Methods (Methods that don't modify the original array)
+
+let arr1 = [1, 2];
+let arr2 = [3, 4];
+let merged = arr1.concat(arr2); // merged becomes [1, 2, 3, 4]
+
+let arr = [1, 2, 3, 4];
+let sliced = arr.slice(1, 3); // sliced becomes [2, 3]
+
+let arr = ['a', 'b', 'c'];
+let str = arr.join('-'); // str becomes "a-b-c"
+
+let arr = [1, 2, 3];
+let index = arr.indexOf(2); // index becomes 1
+
+let arr = [1, 2, 3, 2];
+let index = arr.lastIndexOf(2); // index becomes 3
+
+let arr = [1, 2, 3];
+let exists = arr.includes(2); // exists becomes true
+
+let arr = [1, 2, 3, 4];
+let found = arr.find(x => x > 2); // found becomes 3
+
+let arr = [1, 2, 3, 4];
+let foundIndex = arr.findIndex(x => x > 2); // foundIndex becomes 2
+
+let arr = [1, 2, 3, 4];
+let filtered = arr.filter(x => x % 2 === 0); // filtered becomes [2, 4]
+
+let arr = [1, 2, 3];
+let mapped = arr.map(x => x * 2); // mapped becomes [2, 4, 6]
+
+let arr = [1, 2, 3, 4];
+let sum = arr.reduce((acc, curr) => acc + curr, 0); // sum becomes 10
+
+let arr = [2, 4, 6];
+let allEven = arr.every(x => x % 2 === 0); // allEven becomes true
+
+let arr = [1, 2, 3];
+let hasEven = arr.some(x => x % 2 === 0); // hasEven becomes true
+
+let arr = [1, 2, 3];
+arr.forEach(x => console.log(x)); // Logs 1, 2, 3
+
+let arr = [1, [2, [3, 4]]];
+let flattened = arr.flat(2); // flattened becomes [1, 2, 3, 4]
+
+let arr = [1, 2, 3];
+let mapped = arr.flatMap(x => [x, x * 2]); // mapped becomes [1, 2, 2, 4, 3, 6]
+
+Array destructuring:
+
+let arr = [10, 20, 30];
+
+let [a, b, c] = arr;
+
+console.log(a); // 10
+console.log(b); // 20
+console.log(c); // 30
+
+let arr = [10, 20, 30, 40];
+
+let [, b, , d] = arr;
+
+console.log(b); // 20
+console.log(d); // 40
+
+let arr = [1, [2, 3], 4];
+
+let [a, [b, c], d] = arr;
+
+console.log(a); // 1
+console.log(b); // 2
+console.log(c); // 3
+console.log(d); // 4
+
+let a = 5;
+let b = 10;
+
+// Swap values using destructuring
+[a, b] = [b, a];
+
+console.log(a); // 10
+console.log(b); // 5
+
+Array like objects - string, function arguments, HTML collections
+
+str = 'apple'
+
+str.length
+str[0]
+
+Array.from(object) -> creates array with only values not keys
+
+a = [...arr] -> again creates array with only values not keys
+
+foreach can be similar to for of loops but the only limitation is we cannot use break or continue statements

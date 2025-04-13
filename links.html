@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            links
+        </title>
+        <style>
+            a:link {
+              color: green;
+              background-color: transparent;
+              text-decoration: none;
+            }
+            
+            a:visited {
+              color: pink;
+              background-color: transparent;
+              text-decoration: none;
+            }
+            
+            a:hover {
+              color: red;
+              background-color: transparent;
+              text-decoration: underline;
+            }
+            
+            a:active {
+              color: yellow;
+              background-color: transparent;
+              text-decoration: underline;
+            }
+        </style>
+        <link rel="icon" type="image/x-icon" href="black-cat.jpg">
+        
+    </head>
+    <body>
+        <a href="https://www.google.com" target="_blank">Google</a>
+        <hr>
+        <a href="https://www.google.com" target="_blank">
+            <img src="cat.jpg" alt="Cute Cat" width="100" height="100">
+        </a>
+        <hr>
+        <a href="mailto:st.fxvarshu2112@gmail.com">Send email</a>
+
+        <!-- bookmarks -->
+
+        <h2 id="C4">Chapter 4</h2>
+        <a href="#C4">Jump to Chapter 4</a>
+        <hr>
+        <a href="links2.html#1">See content from links 2 page</a>
+
+        <h2>Images</h2>
+        <p><img src="cat.jpg" alt="Smiley face" style="float:right;width:42px;height:42px;">
+            The image will float to the right of the text.</p>
+        <p><img src="cat.jpg" alt="Smiley face" style="float:left;width:42px;height:42px;">
+                The image will float to the left of the text.</p>
+        <hr>
+        <h2>
+            Image maps
+        </h2>
+        <p>
+            Multiple clickable areas in a image, quite complex <a href="https://www.w3schools.com/html/html_images_imagemap.asp">To know more</a>
+        </p>
+        <p style="background-image: url('swirl.jpg');padding: 4px; height: 20px;">
+        </p>
+
+        <!-- More options:
+        <style>
+            body {
+              background-image: url('img_girl.jpg');
+              background-repeat: no-repeat;
+              background-attachment: fixed;
+              background-size: cover; or 100% 100%
+            }
+            </style> -->
+            
+    </body>
+</html>
+
+
+<!-- The target attribute specifies where to open the linked document.
+
+The target attribute can have one of the following values:
+
+_self - Default. Opens the document in the same window/tab as it was clicked
+_blank - Opens the document in a new window or tab
+_parent - Opens the document in the parent frame
+_top - Opens the document in the full body of the window -->
+
+<!-- Both examples above are using an absolute URL (a full web address) in the href attribute.
+
+A local link (a link to a page within the same website) is specified with a relative URL (without the "https://www" part): -->
+
+<!-- 
+A link can also be styled as a button, by using CSS:
+
+<style>
+    a:link, a:visited {
+      background-color: #f44336;
+      color: white;
+      padding: 15px 25px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+    }
+    
+    a:hover, a:active {
+      background-color: red;
+    }
+</style> -->

@@ -1,0 +1,131 @@
+/* element styling */
+
+body{
+    font-size: 22px;
+    color: pink;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 900;
+    line-height: 1; /* between lines */
+    background-color: aqua;
+}
+
+p{
+    border:2px dashed red;
+    background-color: azure;
+    padding:5px;
+}
+
+div{
+    border:2px dashed;
+    width: fit-content;
+    padding: 5px;
+    box-sizing: content-box;
+}
+
+h1{
+    margin: 0;
+    box-sizing: border-box;
+    margin-left: 50%;
+}
+
+/* Class styling */
+
+.c1{
+    width:20ch; /*only 20 characters */
+}
+
+.c2{
+    width:100%
+}
+
+.underline-fancy {
+    text-decoration: underline;
+    text-decoration-color: crimson;
+    text-decoration-style: wavy;
+    text-decoration-thickness: 2px;
+}
+  
+q {
+    quotes: "«" "»" "‹" "›"; /* opening & closing, then nested */
+} 
+
+/* element + class styling */
+
+p.inline-border {
+    display: inline-block;
+    border: 1px solid black;
+    padding: 4px;
+  }
+
+#1 {
+    color: red;
+}
+
+* {
+    background-color: azure;
+}
+
+a {
+    color: blue !important; 
+}
+/* 
+What style will be used when there is more than one style specified for an HTML element?
+
+All the styles in a page will "cascade" into a new "virtual" style sheet by the following rules, where number one has the highest priority:
+
+Inline style (inside an HTML element)
+External and internal style sheets (in the head section)
+Browser default
+So, an inline style has the highest priority, and will override external and internal styles and browser defaults. */
+
+/* The !important rule in CSS is used to add more importance to a property/value than normal.
+
+In fact, if you use the !important rule, it will override ALL previous styling rules for that specific property on that element! */
+
+/* Center an Image
+To center an image, set left and right margin to auto and make it into a block element: */
+
+/* Left and Right Align - Using position
+One method for aligning elements is to use position: absolute; */
+
+/* Note: Absolute positioned elements are removed from the normal flow, and can overlap elements. */
+
+/* 
+If the padding property has four values:
+
+padding: 25px 50px 75px 100px;
+top padding is 25px
+right padding is 50px
+bottom padding is 75px
+left padding is 100px
+
+If the padding property has three values:
+
+padding: 25px 50px 75px;
+top padding is 25px
+right and left paddings are 50px
+bottom padding is 75px
+
+If the padding property has two values:
+
+padding: 25px 50px;
+top and bottom paddings are 25px
+right and left paddings are 50px
+
+If the padding property has one value:
+
+padding: 25px;
+all four paddings are 25px
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  border: 3px solid green;
+}
+
+Flexbox vs. Grid
+The CSS Flexbox Layout should be used for one-dimensional layout, with rows OR columns.
+
+The CSS Grid Layout should be used for two-dimensional layout, with rows AND columns

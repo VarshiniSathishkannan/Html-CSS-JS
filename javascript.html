@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            JS in HTML
+        </title>
+        <script>
+            function myFunction() {
+              document.getElementById("demo").innerHTML = "Paragraph changed.";
+            }
+            </script>
+            <script src="sample.js"></script>
+
+    </head>
+    <body>
+        <p id="2"></p>
+        <script>
+            document.getElementById("2").innerHTML = "Hello JavaScript!";
+        </script>
+        <h2>Demo JavaScript in Head</h2>
+
+        <p id="demo">A Paragraph</p>
+        <p id="demo2">A Paragraph 2</p>
+
+        <button type="button" onclick="myFunction()">Try it</button>
+        <button type="button" onclick="myFunction2()">Try it 2</button>
+
+    </body>
+</html>
+<!-- 
+<div id="myDiv"><b>Hello</b> world</div>
+javascript
+
+
+document.getElementById("myDiv").innerHTML;
+// Output: "<b>Hello</b> world"
+
+document.getElementById("myDiv").innerText;
+// Output: "Hello world" -->
