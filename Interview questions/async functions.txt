@@ -307,3 +307,25 @@ fetchData
 - The first `.then()` logs the data from the resolved promise and returns a new string `"Processing data..."`.
 - The second `.then()` receives that string and logs it.
 
+Another Example — setTimeout
+
+const person = {
+  name: 'Bob',
+  greet() {
+    console.log(`Hello, I'm ${this.name}`);
+  }
+};
+
+setTimeout(person.greet, 1000); // Logs: Hello, I'm undefined
+
+Why? Because this is lost when greet is passed to setTimeout.
+
+✅ Fix with bind():
+
+setTimeout(person.greet.bind(person), 1000); // Logs: Hello, I'm Bob
+
+Alternatively, with an Arrow Function
+Another way to fix the this problem (without bind) is using an arrow function:
+
+setTimeout(() => person.greet(), 1000);
+Arrow functions don’t have their own this, so they use the this from their surrounding context — which can be helpful too.

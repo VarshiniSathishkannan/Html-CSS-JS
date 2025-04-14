@@ -1,0 +1,197 @@
+javascript events
+
+onchange	An HTML element has been changed
+onclick	The user clicks an HTML element
+onmouseover	The user moves the mouse over an HTML element
+onmouseout	The user moves the mouse away from an HTML element
+onkeydown	The user pushes a keyboard key
+onload	The browser has finished loading the page
+
+
+Event handling in JavaScript is one of the core concepts for interactive web pages and dynamic user interfaces. It allows you to respond to user interactions, like clicks, keyboard input, or mouse movements, and trigger specific actions when those events occur.
+
+Let’s break down event handling in JavaScript from the basics to more advanced concepts 👇
+
+🧠 What Is an Event in JavaScript?
+An event is an occurrence that the browser detects and responds to, such as:
+
+Mouse clicks (click, dblclick)
+
+Keyboard actions (keydown, keyup)
+
+Form interactions (submit, change)
+
+Window events (resize, scroll)
+
+Events are the way you can trigger actions based on user behavior.
+
+✅ Basic Event Handling
+1. Using HTML Event Attributes
+You can define an event handler directly in the HTML markup:
+
+
+<button onclick="alert('Hello World!')">Click Me</button>
+Here, when the button is clicked, the onclick event triggers the action.
+
+2. Using JavaScript Event Listeners
+Instead of writing inline event handlers in the HTML, it’s better to use JavaScript for cleaner and more flexible code. This is where Event Listeners come in.
+
+
+<button id="myButton">Click Me</button>
+
+<script>
+  let button = document.getElementById('myButton');
+  button.addEventListener('click', function() {
+    alert('Button clicked!');
+  });
+</script>
+Here, when the button is clicked, the click event triggers the callback function, which shows an alert.
+
+🔧 Common Event Methods
+.addEventListener()
+
+Adds an event listener to an element.
+
+Syntax: element.addEventListener(event, callback)
+
+Supports multiple event listeners on the same element.
+
+
+let button = document.getElementById('btn');
+button.addEventListener('click', () => {
+  console.log('Button clicked!');
+});
+.removeEventListener()
+
+Removes an event listener from an element.
+
+Syntax: element.removeEventListener(event, callback)
+
+This is useful when you want to stop listening for an event after a certain condition is met.
+
+
+button.removeEventListener('click', callbackFunction);
+.click()
+
+Triggers the click event programmatically.
+
+
+button.click(); // This will trigger the click event handler
+🎯 Event Flow: Bubbling vs Capturing
+In JavaScript, events have a flow, and they can propagate in two ways:
+
+1. Event Bubbling (default)
+In bubbling, the event starts from the target element and bubbles up to the root. This is the default behavior.
+
+
+<div id="parent">
+  <button id="child">Click Me</button>
+</div>
+
+<script>
+  let parent = document.getElementById('parent');
+  let child = document.getElementById('child');
+
+  parent.addEventListener('click', function() {
+    alert('Parent clicked!');
+  });
+
+  child.addEventListener('click', function() {
+    alert('Child clicked!');
+  });
+</script>
+If you click the button, "Child clicked!" will show first, followed by "Parent clicked!" because of the bubbling.
+
+2. Event Capturing
+In capturing, the event starts from the root and travels down to the target element.
+
+To use capturing, set the third argument of addEventListener to true:
+
+
+parent.addEventListener('click', function() {
+  alert('Parent clicked!');
+}, true); // true enables capturing
+Now, "Parent clicked!" will show first, followed by "Child clicked!".
+
+✅ Event Object
+When an event occurs, the browser passes an event object to the event handler. This object contains useful properties and methods for interacting with the event.
+
+Common Properties of the Event Object:
+
+target: The element that triggered the event
+
+type: The type of event (e.g., 'click', 'keydown')
+
+currentTarget: The element to which the event listener is attached
+
+event.preventDefault(): Prevents the default action (e.g., prevent form submission)
+
+event.stopPropagation(): Stops the event from propagating to parent elements
+
+
+let button = document.getElementById('myButton');
+button.addEventListener('click', function(event) {
+  console.log(event.target); // The button clicked
+  event.preventDefault();    // Prevents the default button behavior
+  event.stopPropagation();   // Stops bubbling
+});
+
+✅ Event Delegation
+Event delegation is a powerful technique where you attach a single event listener to a parent element to handle events for multiple child elements.
+
+This avoids the need to add multiple event listeners to individual elements, which is more efficient.
+
+Example:
+
+<ul id="list">
+  <li>Item 1</li>
+  <li>Item 2</li>
+  <li>Item 3</li>
+</ul>
+
+<script>
+  let list = document.getElementById('list');
+
+  list.addEventListener('click', function(event) {
+    if (event.target.tagName === 'LI') {
+      alert('You clicked on ' + event.target.textContent);
+    }
+  });
+</script>
+Here, clicking on any <li> inside the <ul> will trigger the same handler. This is especially useful when you dynamically add/remove items from the list!
+
+"this" keyword in the context of event handling in JS
+
+It refers to the element that the event handler is attached to 
+
+The Problem with this in Event Handlers
+When you pass a method as a callback (e.g., to an event handler or a timeout), it often loses its original context (this).
+
+🔴 Without bind():
+
+const person = {
+  name: 'Alice',
+  sayHi() {
+    console.log(`Hi, I'm ${this.name}`);
+  }
+};
+
+document.getElementById('btn').addEventListener('click', person.sayHi);
+What happens here?
+
+When the button is clicked, sayHi runs, but this doesn't refer to person anymore.
+
+Instead, this refers to the button element or undefined (in strict mode).
+
+So it logs: Hi, I'm undefined.
+
+Fixing it with bind():
+
+document.getElementById('btn').addEventListener('click', person.sayHi.bind(person));
+✅ Output:
+Hi, I'm Alice
+
+bind(person) creates a new function where this is permanently set to person.
+
+No matter who calls it (like a button or timer), this will always refer to person.
+

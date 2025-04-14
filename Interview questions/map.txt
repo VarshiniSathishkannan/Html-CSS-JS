@@ -1,0 +1,79 @@
+What is a Map?
+A Map is a collection of key-value pairs, just like a regular object ({}), but with some important advantages:
+
+✅ Key Differences from Objects:
+Feature	    Map	                                Object
+Key types	Any type (objects, functions, etc)	Strings or Symbols only
+Key order	Insertion order is preserved	    Not guaranteed (in older JS)
+Iteration	Easier with built-in methods	    Needs for...in or manual keys
+Performance	Optimized for frequent additions/removals	Less optimized for this
+🛠️ Creating a Map
+
+let map = new Map();
+Or initialize with key-value pairs:
+
+
+let map = new Map([
+  ['name', 'Alice'],
+  ['age', 30]
+]);
+🔧 Common Map Methods
+Method	Description
+.set(key, value)	Adds or updates a value by key
+.get(key)	Retrieves the value by key
+.has(key)	Checks if a key exists
+.delete(key)	Deletes the key-value pair
+.clear()	Removes all entries
+.size	Returns the number of entries
+Example:
+
+let userMap = new Map();
+
+userMap.set('name', 'Bob');
+userMap.set('age', 25);
+userMap.set(true, 'logged in');
+
+console.log(userMap.get('name'));  // "Bob"
+console.log(userMap.has('age'));   // true
+userMap.delete('age');
+console.log(userMap.size);         // 2
+🔁 Iterating over a Map
+
+let map = new Map([
+  ['a', 1],
+  ['b', 2],
+  ['c', 3]
+]);
+
+for (let [key, value] of map) {
+  console.log(`${key} = ${value}`);
+}
+Other iterators:
+map.keys() → iterates keys
+
+map.values() → iterates values
+
+map.entries() → iterates key-value pairs
+
+
+map.forEach((value, key) => {
+  console.log(`${key}: ${value}`);
+});
+📦 Map as Object Alternative
+Maps are great when:
+
+You need non-string keys (like objects or functions)
+
+You want order-preserving behavior
+
+You're storing dynamic or frequently changing data
+
+Example with Object as Key:
+
+let user = { id: 1 };
+let userSettings = new Map();
+
+userSettings.set(user, { theme: "dark" });
+
+console.log(userSettings.get(user)); // { theme: "dark" }
+👆 Can't do that with regular objects!

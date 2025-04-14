@@ -1,0 +1,220 @@
+let str = 'hello';
+
+template liternals (Using backticks)
+
+result = `${str} all`;
+console.log(result);
+
+Multi line strings (using backticks)
+
+let multilineStr = `
+This is a multiple
+line 
+sentence `;
+
+If you have to use quotes, you'd need to manually add newline characters \n:
+
+let str = "This is a multiple\nline\nsentence";
+
+Valid Embedded Expressions
+
+You can put almost any JavaScript expression inside ${...}:
+
+Type	Example
+Variable	${x}
+Math Expression	${a * b}
+Ternary	${age > 18 ? 'Adult' : 'Minor'}
+Function Call	${getName()}
+Object Property	${user.name}
+Array Index	${arr[0]}
+
+Embedded expressions only work inside template literals:
+
+
+let name = "Alice";
+let str = "Hello, ${name}";  // ❌ Will print: Hello, ${name}, not "Hello, Alice"
+✅ Correct:
+
+
+let str = `Hello, ${name}`;  // ✅ Hello, Alice
+
+String Operations:
+
+1. length
+Get the number of characters in a string.
+
+
+let str = "JavaScript";
+console.log(str.length); // 10
+
+✂️ String Manipulation
+
+2. toUpperCase() / toLowerCase()
+Convert the string to uppercase or lowercase.
+
+
+"hello".toUpperCase(); // "HELLO"
+"WORLD".toLowerCase(); // "world"
+
+3. slice(start, end)
+Extract a portion of the string.
+
+
+let str = "JavaScript";
+str.slice(0, 4); // "Java"
+str.slice(4);    // "Script"
+
+4. substring(start, end)
+Similar to slice, but doesn’t allow negative indices.
+
+
+str.substring(0, 4); // "Java"
+
+5. substr(start, length) (Deprecated but still used)
+Extracts a substring based on starting index and length.
+
+
+str.substr(4, 6); // "Script"
+
+6. replace(search, replacement)
+Replace part of a string.
+
+
+"Hello World".replace("World", "JS"); // "Hello JS"
+📝 For global or regex replacement:
+
+
+"foo foo".replace(/foo/g, "bar"); // "bar bar"
+
+7. trim()
+Remove whitespace from both ends of a string.
+
+
+"  hello  ".trim(); // "hello"
+
+8. padStart() / padEnd()
+Pad the beginning or end of a string to a certain length.
+
+
+"5".padStart(3, "0"); // "005"
+"hi".padEnd(5, "!");  // "hi!!!"
+🔍 Searching in Strings
+
+9. includes(substring)
+Check if a string contains another string.
+
+
+"JavaScript".includes("Script"); // true
+
+10. indexOf(substring) / lastIndexOf()
+Find the index of the first/last occurrence of a substring.
+
+
+"banana".indexOf("a");      // 1
+"banana".lastIndexOf("a");  // 5
+
+11. startsWith() / endsWith()
+
+"Hello world".startsWith("Hello"); // true
+"Hello world".endsWith("world");   // true
+
+🔗 String Conversion
+
+12. split(delimiter)
+Split a string into an array.
+
+
+"apple,banana,orange".split(","); // ["apple", "banana", "orange"]
+
+13. concat()
+Join multiple strings together.
+
+
+"Hello".concat(" ", "World"); // "Hello World"
+Or just use +:
+
+
+"Hello" + " " + "World"; // "Hello World"
+
+🧠 Other Useful Ones
+14. repeat(n)
+Repeat the string n times.
+
+"ha".repeat(3); // "hahaha"
+15. charAt(index) / charCodeAt(index)
+
+"JS".charAt(0);      // "J"
+"JS".charCodeAt(0);  // 74 (ASCII code for 'J')
+
+String Concatenation:
+
+1. Using the + Operator (Most common)
+
+let str1 = "Hello";
+let str2 = "World";
+let result = str1 + " " + str2;
+
+console.log(result); // "Hello World"
+
+✅ 2. Using += (Append to existing string)
+
+let greeting = "Hi";
+greeting += ", there!";
+
+console.log(greeting); // "Hi, there!"
+
+✅ 3. Using concat() Method
+
+let str1 = "Hello";
+let str2 = "World";
+let result = str1.concat(" ", str2);
+
+console.log(result); // "Hello World"
+You can chain multiple .concat() calls:
+
+
+let final = "I".concat(" love").concat(" JS");
+console.log(final); // "I love JS"
+
+✅ 4. Using Template Literals (Backticks `)
+
+let name = "Alice";
+let result = `Hello, ${name}!`;
+
+console.log(result); // "Hello, Alice!"
+Supports expressions too:
+
+
+let a = 5, b = 10;
+console.log(`Sum is ${a + b}`); // "Sum is 15"
+
+✅ 5. Using Array.join()
+If you have parts in an array, you can join them using .join():
+
+
+let parts = ["Hello", "World"];
+let result = parts.join(" ");
+
+console.log(result); // "Hello World"
+Useful for:
+
+Joining dynamic parts
+
+Joining with special characters (like -, ,, |)
+
+✅ 6. Using Array.reduce()
+Not common, but works especially for dynamic lists:
+
+
+let words = ["JS", "is", "fun"];
+let sentence = words.reduce((acc, word) => acc + " " + word);
+
+console.log(sentence); // "JS is fun"
+
+✅ 7. Using String.raw() (for raw string output, like in multiline strings)
+
+let name = "Bob";
+let raw = String.raw`Hello\n${name}`;
+
+console.log(raw); // "Hello\nBob" (no actual newline)
+Useful when working with file paths or regex patterns.

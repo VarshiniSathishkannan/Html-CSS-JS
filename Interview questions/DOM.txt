@@ -1,0 +1,213 @@
+DOM stands for Document Object Model.
+
+It is a tree-like structure that the browser creates based on your HTML.
+
+Each element in your HTML becomes an object in this tree.
+
+The DOM is what JavaScript interacts with to read, change, or manipulate the page.
+
+Example: HTML → DOM
+html
+
+<p id="message">Hello</p>
+The browser turns this into a DOM object like:
+
+js
+
+{
+  tagName: "P",
+  id: "message",
+  innerText: "Hello"
+}
+And you can access it in JS like:
+
+
+let para = document.getElementById("message");
+para.textContent = "Hi there!";
+🟢 This changes what the user sees on the webpage — the DOM is live and interactive.
+
+What can you do with the DOM?
+✅ Access elements
+✅ Change text or HTML
+✅ Change styles
+✅ Add or remove elements
+✅ Listen to user events (like clicks)
+
+DOM Methods:
+
+1. DOM Selection Methods (Find elements)
+Method	Description
+document.getElementById(id)	Finds an element by its ID
+document.getElementsByClassName(class)	Returns a live HTMLCollection of all elements with that class
+document.getElementsByTagName(tag)	Returns elements by tag name
+document.querySelector(selector)	Returns first matching element (CSS selector)
+document.querySelectorAll(selector)	Returns all matching elements (NodeList)
+
+Example:
+
+let btn = document.getElementById("myBtn");
+let items = document.querySelectorAll(".list-item");
+
+2. DOM Manipulation Methods (Change content)
+Method	Description
+element.innerText / textContent	Gets/sets the text
+element.innerHTML	Gets/sets the HTML inside the element
+element.setAttribute(attr, value)	Adds/updates an attribute
+element.getAttribute(attr)	Gets the value of an attribute
+element.removeAttribute(attr)	Removes an attribute
+element.style.property	Sets inline styles
+Example:
+
+let para = document.querySelector("p");
+para.innerText = "Updated text";
+para.setAttribute("class", "highlight");
+
+3. DOM Creation & Insertion Methods
+Method	Description
+document.createElement(tag)	Creates a new element
+document.createTextNode(text)	Creates a text node
+parent.appendChild(child)	Appends a child node
+parent.insertBefore(newNode, referenceNode)	Inserts before a specific node
+parent.append(...)	Appends one or more nodes or strings
+parent.prepend(...)	Inserts at the beginning
+Example:
+
+let newDiv = document.createElement("div");
+newDiv.innerText = "Hello!";
+document.body.appendChild(newDiv);
+
+4. DOM Removal Methods
+Method	Description
+element.remove()	Removes the element from DOM
+parent.removeChild(child)	Removes a child node
+Example:
+
+let el = document.getElementById("removeMe");
+el.remove();  // Easy way to delete an element
+
+5. DOM Traversal Methods (Move around the DOM tree)
+Property/Method	Description
+element.parentNode	Get parent
+element.children	Get children (HTMLCollection)
+element.childNodes	Get all child nodes (including text/comments)
+element.firstChild / lastChild	First or last child node
+element.firstElementChild / lastElementChild	First/last element child
+element.previousElementSibling / nextElementSibling	Get previous/next sibling
+
+<div id="parent">
+  <p id="child">Hello</p>
+</div>
+
+let child = document.getElementById("child");
+console.log(child.parentNode);   // <div id="parent">...</div>
+console.log(child.parentElement); // Same thing (both work in most cases)
+
+6. DOM Event Methods
+Method	Description
+element.addEventListener(event, callback)	Add an event listener
+element.removeEventListener(event, callback)	Remove an event listener
+element.onclick = function	Add click handler (old way)
+
+let btn = document.getElementById("clickMe");
+btn.addEventListener("click", function() {
+  alert("Button clicked!");
+});
+
+Bonus: Form-related DOM Methods
+Method	Description
+form.elements	Get all form fields
+input.value	Get/set input value
+checkbox.checked	Check if checkbox is checked
+
+The root node of the DOM is: document
+
+console.log(document); // The root DOM object
+console.log(document.documentElement); // <html>
+console.log(document.body); // <body>
+
+1. What is an HTMLCollection?
+A live collection of DOM elements.
+
+Automatically updates itself when the document changes.
+
+Only contains element nodes (not text, comments, etc).
+
+👉 Returned by:
+document.getElementsByClassName()
+
+document.getElementsByTagName()
+
+element.children
+
+🔍 Example:
+
+<ul id="fruits">
+  <li>Apple</li>
+  <li>Banana</li>
+</ul>
+
+let list = document.getElementById("fruits");
+let items = list.children; // HTMLCollection
+
+console.log(items); // HTMLCollection(2) [li, li]
+If you later add a new <li>, items will automatically include it. That's what makes it live.
+
+2. What is a NodeList?
+Can be live or static, depending on how you get it.
+
+Can include text nodes, comments, and elements.
+
+Looks like an array, but not a real array.
+
+👉 Returned by:
+document.querySelectorAll() → static NodeList
+
+childNodes → live NodeList
+
+🔍 Example:
+
+let nodes = document.querySelectorAll("li"); // NodeList
+console.log(nodes); // NodeList(2) [li, li]
+This one doesn't update if you later add more <li> elements.
+
+In the DOM (Document Object Model), a Node represents a single unit in the document's tree structure.
+
+A Node can be:
+
+An element node (e.g., <div>, <p>)
+
+A text node (e.g., the content inside an element like Hello World)
+
+A comment node (e.g., <!-- This is a comment -->)
+
+A document node (the entire document)
+
+An attribute node (e.g., class="container" inside an element)
+
+So, in short, all elements are nodes, but not all nodes are elements.
+
+Types of Nodes:
+Element Node: Represents an element (like a tag <div>, <p>, etc.)
+
+Text Node: Represents the text inside an element (like the "Hello World" inside <p>Hello World</p>)
+
+Comment Node: Represents comments (<!-- Comment -->)
+
+Document Node: The entire document (document is the root node)
+
+Attribute Node: Represents attributes of elements (though this is less commonly used directly in JS)
+
+🔘 What is an Element?
+An Element is a specific type of node that corresponds to an HTML element in the DOM.
+
+An element node is a type of node, but when people refer to "elements" in the DOM, they typically mean the tags you see in HTML, such as <div>, <p>, <a>, etc.
+
+It represents a structural part of your HTML document, and you can access and manipulate it using JavaScript.
+
+Example:
+
+<p>Hello, world!</p>
+<p> is an element node.
+
+"Hello, world!" is a text node inside the <p> element node.
+

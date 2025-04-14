@@ -1,3 +1,78 @@
+parameters are placeholders in the function declaration/expression
+
+Arguments are the actual values passed to the functions
+
+Ways to pass arguments to a fucntion:
+
+Positional arguments - normal way
+Named arguments - Passing an object 
+Argument object
+
+sum(1,2,3)
+
+function sum(){   -- here we are not declaring parameters but we can use the arguments object to   get the values
+    console.log(arguments[0]);
+}
+
+default parameters -- function sum(a=5)
+
+Pure Vs Impure functions:
+
+Pure - always produces the same output for the same input, cannot modify the state and does not have side effects
+
+Impure - Does not produce the same output for the same input, can modify the state and can have side effects
+
+
+Why do we need call, apply, and bind?
+In JavaScript, the value of this inside a function depends on how the function is called. These methods help you control what this refers to when the function is executed.
+
+call() Method
+📌 Syntax:
+
+func.call(thisArg, arg1, arg2, ...);
+Immediately calls the function.
+
+thisArg sets what this refers to inside the function.
+
+Arguments are passed individually.
+
+🧪 Example:
+
+function greet(greeting) {
+  console.log(`${greeting}, my name is ${this.name}`);
+}
+
+const person = { name: 'Alice' };
+
+greet.call(person, 'Hello');  // Output: "Hello, my name is Alice"
+
+apply() Method
+
+📌 Syntax:
+
+func.apply(thisArg, [arg1, arg2, ...]);
+Just like call(), but arguments are passed as an array.
+
+🧪 Example:
+
+greet.apply(person, ['Hi']);  // Output: "Hi, my name is Alice"
+
+bind() Method
+
+const newFunc = func.bind(thisArg, arg1, arg2, ...);
+
+Returns a new function with this permanently set to thisArg.
+
+You can store and call later.
+
+Doesn’t execute immediately.
+
+🧪 Example:
+
+const sayHello = greet.bind(person, 'Hey');
+
+sayHello();  // Output: "Hey, my name is Alice"
+
 Function Declarations: Traditional function with hoisting.
 
 Function Expressions: Anonymous functions assigned to variables.

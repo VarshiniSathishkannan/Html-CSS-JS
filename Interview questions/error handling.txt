@@ -1,0 +1,151 @@
+1. try...catch
+The try...catch statement is used to catch errors that might occur in a block of code and handle them gracefully, without interrupting the flow of the program.
+
+Syntax:
+
+try {
+  // Code that might throw an error
+} catch (error) {
+  // Code that runs if an error occurs
+} finally {
+  // Optional block that runs after the try or catch block, regardless of an error
+}
+Example:
+
+try {
+  let result = 10 / 0;  // This will not throw an error (but leads to Infinity in JS)
+  console.log(result);
+} catch (error) {
+  console.log("An error occurred:", error.message);  // This won't run
+} finally {
+  console.log("This will run regardless of an error.");
+}
+2. The catch Block:
+The catch block is where you can handle errors that occur inside the try block. The error (or any name you choose) is the error object that contains information about the error.
+
+Example:
+
+try {
+  let x = undefinedVar;  // This will throw an error because undefinedVar is not defined
+} catch (error) {
+  console.log("Caught an error: ", error.message);  // "Caught an error:  undefinedVar is not defined"
+}
+
+The error object contains useful properties such as:
+
+error.message: A description of the error.
+
+error.name: The name of the error (e.g., ReferenceError, TypeError).
+
+error.stack: A stack trace of where the error occurred.
+
+3. The finally Block:
+The finally block, if present, will execute regardless of whether an error occurred or not. This is useful for cleaning up resources, closing connections, or logging, regardless of the success or failure of the code.
+
+Example:
+
+try {
+  let x = 5;
+  let y = 10;
+  console.log(x + y);  // No error here
+} catch (error) {
+  console.log("This won't run");
+} finally {
+  console.log("This runs no matter what");
+}
+Output:
+
+15
+This runs no matter what
+
+4. Throwing Custom Errors (throw)
+Sometimes, you might want to manually throw an error. You can do this using the throw statement. When you throw an error, it stops the normal flow of the program and jumps to the nearest catch block (if available).
+
+Syntax:
+
+throw new Error("This is a custom error");
+Example:
+
+function checkNumber(num) {
+  if (num < 0) {
+    throw new Error("Negative numbers are not allowed");
+  } else {
+    console.log("Valid number:", num);
+  }
+}
+
+try {
+  checkNumber(-5);
+} catch (error) {
+  console.log("Caught error:", error.message);  // Caught error: Negative numbers are not allowed
+}
+
+5. Handling Asynchronous Errors (Promises)
+Error handling is slightly different when working with asynchronous code, like Promises. In promises, you handle errors using .catch() or try...catch with async/await.
+
+Example with Promises:
+
+let myPromise = new Promise((resolve, reject) => {
+  let success = false;
+  if (success) {
+    resolve("Success!");
+  } else {
+    reject("Something went wrong!");
+  }
+});
+
+myPromise
+  .then(result => console.log(result))  // Success case
+  .catch(error => console.log(error));  // Error case
+  
+Example with async/await:
+
+async function fetchData() {
+  try {
+    let response = await fetch("https://api.example.com/data");
+    let data = await response.json();
+    console.log(data);
+  } catch (error) {
+    console.log("Error fetching data:", error.message);  // Handle error if the API fails
+  }
+}
+
+fetchData();
+Types of Errors in JavaScript
+JavaScript defines several types of built-in errors, which you can catch and handle specifically:
+
+Common Error Types:
+ReferenceError: Occurs when trying to reference a variable that doesn’t exist.
+
+TypeError: Happens when a value is not of the expected type.
+
+SyntaxError: When the JavaScript code has invalid syntax (e.g., missing brackets, commas).
+
+RangeError: Occurs when a number is out of range (e.g., invalid array index).
+
+EvalError: An error related to eval() (rarely used).
+
+URIError: Related to invalid URI functions.
+
+Example of catching specific error types:
+
+try {
+  let obj = undefined;
+  console.log(obj.property);  // This will throw a TypeError
+} catch (error) {
+  if (error instanceof TypeError) {
+    console.log("TypeError caught:", error.message);
+  } else {
+    console.log("Some other error caught:", error.message);
+  }
+}
+🧵 TL;DR – Summary of Error Handling
+try...catch: Use to catch and handle errors.
+
+throw: Use to throw custom errors.
+
+finally: Always runs, no matter if there’s an error.
+
+Asynchronous Errors: Handle using .catch() for Promises or try...catch with async/await.
+
+Types of Errors: ReferenceError, TypeError, SyntaxError, etc.

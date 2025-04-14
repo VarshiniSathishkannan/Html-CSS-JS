@@ -1,0 +1,434 @@
+Objects in JavaScript
+
+Objects are one of the most fundamental concepts in JavaScript and are used to store collections of data in key-value pairs. An object is a reference type that allows you to group related data and functions together. In JavaScript, everything that is not a primitive type (like string, number, boolean, undefined, null, symbol, bigint) is an object.
+
+1. Creating Objects
+You can create an object using two main ways:
+
+a. Using Object Literal Syntax
+This is the most common and simplest way to create an object.
+
+
+let person = {
+  name: "John",
+  age: 30,
+  greet: function() {
+    console.log("Hello, " + this.name);
+  }
+};
+
+console.log(person.name);  // "John"
+console.log(person.age);   // 30
+person.greet();            // "Hello, John"
+
+b. Using the new Object() Syntax
+This approach is less common but works the same.
+
+
+let person = new Object();
+person.name = "John";
+person.age = 30;
+person.greet = function() {
+  console.log("Hello, " + this.name);
+};
+
+console.log(person.name);  // "John"
+person.greet();            // "Hello, John"
+
+2. Key-Value Pairs (Properties)
+An object consists of properties and methods.
+
+Property: A key-value pair in the object. The key is a string, and the value can be anything (a primitive type, array, another object, a function, etc.).
+
+Method: A function that is associated with an object.
+
+let car = {
+  make: "Toyota",
+  model: "Corolla",
+  year: 2020,
+  drive: function() {
+    console.log("Driving the " + this.make + " " + this.model);
+  }
+};
+
+console.log(car.make);  // "Toyota"
+car.drive();            // "Driving the Toyota Corolla"
+
+3. Accessing Object Properties
+You can access an object's properties in two ways:
+
+a. Dot Notation
+
+console.log(person.name);  // "John"
+
+b. Bracket Notation
+Bracket notation is useful when property names are dynamic, or when they have spaces or special characters.
+
+console.log(person["age"]);  // 30
+You can also use variables in bracket notation:
+
+let prop = "name";
+console.log(person[prop]);  // "John"
+
+4. Modifying Object Properties
+You can change the value of an object property simply by reassigning it.
+
+
+person.age = 35;
+console.log(person.age);  // 35
+
+5. Adding New Properties to Objects
+You can add new properties dynamically to objects, even after the object has been created.
+
+
+person.city = "New York";
+console.log(person.city);  // "New York"
+
+6. Deleting Properties
+You can remove a property from an object using the delete keyword.
+
+
+delete person.age;
+console.log(person.age);  // undefined
+
+7. Object Methods
+Methods are simply functions stored as object properties. You can define a method within an object to perform actions related to that object.
+
+
+let calculator = {
+  num1: 5,
+  num2: 10,
+  add: function() {
+    return this.num1 + this.num2;
+  },
+  multiply: function() {
+    return this.num1 * this.num2;
+  }
+};
+
+console.log(calculator.add());      // 15
+console.log(calculator.multiply()); // 50
+In this example, add and multiply are methods that perform actions on the object’s properties.
+
+8. this Keyword in Objects
+Inside an object method, this refers to the object itself. It allows you to access properties and methods within that object.
+
+
+let person = {
+  firstName: "Alice",
+  lastName: "Smith",
+  fullName: function() {
+    return this.firstName + " " + this.lastName;
+  }
+};
+
+console.log(person.fullName()); // "Alice Smith"
+
+9. Object Constructor Function
+You can create multiple objects of the same structure using a constructor function. This is similar to how classes work in other programming languages, but JavaScript objects use constructor functions.
+
+Example:
+
+function Person(name, age) {
+  this.name = name;
+  this.age = age;
+  this.greet = function() {
+    console.log("Hello, " + this.name);
+  };
+}
+
+let person1 = new Person("John", 30);
+let person2 = new Person("Jane", 25);
+
+person1.greet();  // "Hello, John"
+person2.greet();  // "Hello, Jane"
+
+10. Object Methods
+There are built-in methods that can help you manipulate objects:
+
+a. Object.keys()
+Returns an array of the object’s keys.
+
+
+let person = { name: "Alice", age: 25 };
+console.log(Object.keys(person));  // ["name", "age"]
+
+b. Object.values()
+Returns an array of the object’s values.
+
+
+console.log(Object.values(person));  // ["Alice", 25]
+
+c. Object.entries()
+Returns an array of key-value pairs.
+
+
+console.log(Object.entries(person));  // [["name", "Alice"], ["age", 25]]
+
+d. Object.assign()
+Copies values from one or more source objects to a target object.
+
+
+let target = { name: "John" };
+let source = { age: 30 };
+
+Object.assign(target, source);
+console.log(target);  // { name: "John", age: 30 }
+
+e. Object.freeze()
+Makes an object immutable, preventing any further changes.
+
+
+let person = { name: "Alice", age: 25 };
+Object.freeze(person);
+person.age = 30;  // This will not change the object
+console.log(person.age);  // 25
+
+11. Prototypes and Inheritance
+In JavaScript, objects have prototype chains. When you access a property or method, JavaScript first checks the object itself. If the property isn’t found, it looks at the prototype of the object, and so on, up the prototype chain.
+
+Example of Prototypal Inheritance:
+
+function Animal(name) {
+  this.name = name;
+}
+
+Animal.prototype.sayHello = function() {
+  console.log("Hello, " + this.name);
+};
+
+let dog = new Animal("Buddy");
+dog.sayHello();  // "Hello, Buddy"
+
+12. Object Destructuring
+You can extract properties from an object and assign them to variables using destructuring:
+
+
+let person = { name: "Alice", age: 25 };
+let { name, age } = person;
+console.log(name);  // "Alice"
+console.log(age);   // 25
+
+13. Check if property exists in object
+
+1. Using the in operator
+
+let person = { name: "Alice", age: 25 };
+
+console.log("name" in person);  // true
+console.log("email" in person); // false
+🔸 This checks both own properties and inherited properties.
+
+✅ 2. Using hasOwnProperty()
+
+let person = { name: "Alice" };
+
+console.log(person.hasOwnProperty("name"));   // true
+console.log(person.hasOwnProperty("toString")); // false (inherited)
+🔸 This checks only own properties, not those from the prototype.
+
+✅ 3. Using typeof or !== undefined
+
+let car = { brand: "Toyota" };
+
+if (typeof car.model !== "undefined") {
+  console.log("Model exists");
+} else {
+  console.log("Model does not exist");
+}
+or more simply:
+
+
+if (car.model !== undefined) {
+  console.log("Exists");
+}
+⚠️ Caution: This method can give false negatives if the property exists but its value is explicitly set to undefined.
+
+14. Clone or copy an object 
+
+Why Not Just Assign?
+
+let obj1 = { a: 1 };
+let obj2 = obj1;
+
+obj2.a = 99;
+console.log(obj1.a); // 👉 99  (oops!)
+
+❌ This doesn’t clone — it copies the reference, not the object itself.
+
+1. Shallow Clone (top level only)
+a. Using Object.assign()
+
+let original = { name: "Alice", age: 25 };
+let copy = Object.assign({}, original);
+
+copy.name = "Bob";
+console.log(original.name); // "Alice" ✅ (unchanged)
+
+b. Using the Spread Operator (...)
+
+let original = { name: "Alice", age: 25 };
+let copy = { ...original };
+
+copy.age = 30;
+console.log(original.age); // 25 ✅
+
+✅ Both methods copy only the first level. Nested objects are still referenced.
+
+Example:
+
+let obj = { a: 1, b: { c: 2 } };
+let copy = { ...obj };
+
+copy.b.c = 99;
+console.log(obj.b.c); // 👉 99 ❌ (nested object is shared)
+
+2. Deep Clone (everything, including nested objects)
+a. Using structuredClone() (modern + built-in ✅)
+
+let obj = { name: "Alice", info: { age: 25 } };
+let deepCopy = structuredClone(obj);
+
+deepCopy.info.age = 99;
+console.log(obj.info.age); // 25 ✅
+✅ Handles nested objects, arrays, dates, maps, sets. ❌ Not supported in older environments (like IE or old Node versions).
+
+b. Using JSON.parse(JSON.stringify()) (classic but limited)
+
+let original = { a: 1, b: { c: 2 } };
+let deepCopy = JSON.parse(JSON.stringify(original));
+
+deepCopy.b.c = 999;
+console.log(original.b.c); // 2 ✅
+⚠️ Caveats:
+
+Can’t handle functions
+
+Dates become strings
+
+Skips undefined, symbols, circular references
+
+✅ Object.create() – What Is It?
+Object.create(proto) creates a new object and sets its prototype to the object you pass in (proto).
+
+🔧 Syntax:
+
+let obj = Object.create(prototypeObject);
+Example:
+
+let animal = {
+  eats: true,
+  walk() {
+    console.log("Animal walks");
+  }
+};
+
+let dog = Object.create(animal);  // dog inherits from animal
+dog.barks = true;
+
+console.log(dog.eats); // true (inherited)
+dog.walk();            // "Animal walks"
+console.log(dog.barks); // true (own property)
+In this example:
+
+animal is the prototype of dog.
+
+dog inherits all properties and methods of animal.
+
+📦 Use Cases
+
+✅ 1. Inheritance without constructors
+If you want to create a new object based on another object, Object.create() is perfect.
+
+
+let baseUser = {
+  isActive: true,
+  greet() {
+    console.log("Hi!");
+  }
+};
+
+let adminUser = Object.create(baseUser);
+adminUser.role = "admin";
+
+adminUser.greet();       // "Hi!"
+console.log(adminUser.isActive); // true
+
+✅ 2. Creating objects with no prototype
+You can pass null to create a truly clean object, with no inherited methods like toString, hasOwnProperty, etc.
+
+What is protoype ?
+
+let pureObject = Object.create(null);
+pureObject.name = "Custom";
+console.log(pureObject); // { name: "Custom" }
+console.log(pureObject.toString); // undefined
+
+ What is a Prototype in JavaScript?
+In JavaScript, every object has an internal hidden property called [[Prototype]] (usually accessed via .prototype or __proto__), which refers to another object — its prototype.
+
+The prototype is like a blueprint or fallback: if JavaScript doesn’t find a property or method on the object itself, it looks up the prototype chain to see if it exists there.
+
+🧩 Simple Analogy:
+If you don’t know how to do something, you ask your parent (prototype). If they don’t know, they ask their parent (and so on) — that’s the prototype chain.
+
+let person = {
+  greet: function () {
+    console.log("Hello!");
+  }
+};
+
+let john = Object.create(person);  // john inherits from person
+john.name = "John";
+
+console.log(john.name);  // "John" (own property)
+john.greet();            // "Hello!" (inherited from prototype)
+
+john doesn't have a greet() method.
+
+JavaScript looks up to john's prototype (person) and finds greet() there.
+
+obj.__proto__	Refers to the object's prototype (used for accessing the prototype)
+Function.prototype	A property on functions that sets the prototype for all objects created with new
+
+function Person(name) {
+  this.name = name;
+}
+
+Person.prototype.sayHello = function () {
+  console.log("Hi, I'm " + this.name);
+};
+
+let p1 = new Person("Alice");
+p1.sayHello(); // "Hi, I'm Alice"
+Here:
+
+p1.__proto__ === Person.prototype is true
+
+Person.prototype is shared by all instances of Person
+
+Why We Still Use Objects in JavaScript (Even Though We Have class)
+1. 🔧 Classes in JS Are Just Syntactic Sugar
+
+class Person {
+  constructor(name) {
+    this.name = name;
+  }
+  greet() {
+    console.log(`Hi, I'm ${this.name}`);
+  }
+}
+⬇️ Internally, this is just JavaScript’s prototype-based behavior under the hood.
+
+It’s the same as writing:
+
+
+function Person(name) {
+  this.name = name;
+}
+Person.prototype.greet = function () {
+  console.log(`Hi, I'm ${this.name}`);
+};
+So even with class, you're still working with objects and prototypes underneath.
+
+

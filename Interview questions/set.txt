@@ -1,0 +1,77 @@
+What is a Set?
+A Set is a collection of unique values — no duplicates allowed!
+
+It's kind of like an array, but:
+
+✅ No repeated values
+
+✅ Maintains insertion order
+
+✅ Can hold any type of value: primitives or object references
+
+Creating a Set
+
+let mySet = new Set();
+
+mySet.add(1);
+mySet.add(5);
+mySet.add(1); // duplicate, ignored
+
+console.log(mySet); // Set(2) { 1, 5 }
+Or you can initialize it with an iterable (like an array):
+
+
+let numbers = new Set([1, 2, 3, 2, 1]);
+console.log(numbers); // Set(3) { 1, 2, 3 }
+🔧 Set Methods
+Method	Description
+.add(value)	Adds a value to the set
+.delete(value)	Removes a value from the set
+.has(value)	Checks if the set contains the value
+.clear()	Removes all values
+.size	Returns the number of unique items
+Example:
+
+let fruits = new Set();
+
+fruits.add("apple");
+fruits.add("banana");
+
+console.log(fruits.has("apple")); // true
+fruits.delete("banana");
+
+console.log(fruits.size); // 1
+fruits.clear();
+console.log(fruits.size); // 0
+🔁 Iterating over a Set
+You can loop through a Set using:
+
+a. for...of loop
+
+let colors = new Set(["red", "green", "blue"]);
+
+for (let color of colors) {
+  console.log(color);
+}
+b. .forEach()
+
+colors.forEach(color => console.log(color));
+⚡ Use Cases of Set
+Remove duplicates from an array
+
+
+let nums = [1, 2, 3, 2, 1];
+let unique = [...new Set(nums)];
+console.log(unique); // [1, 2, 3]
+Efficient existence check
+
+
+let set = new Set(["a", "b", "c"]);
+console.log(set.has("b")); // true
+Store unique objects or IDs
+
+
+let ids = new Set();
+ids.add(123);
+ids.add(456);
+ids.add(123); // ignored
