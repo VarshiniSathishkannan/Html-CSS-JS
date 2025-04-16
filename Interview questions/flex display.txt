@@ -1,0 +1,22 @@
+display: flex	Turns container into a flexbox layout
+
+justify-content	Controls alignment on main axis
+
+align-items	Controls alignment on cross axis
+
+flex-direction	Sets direction: row or column
+
+flex	Makes items grow/shrink
+
+align-content
+
+This property only takes effect on multi-line flexible containers, where flex-wrap is set to either wrap or wrap-reverse). A single-line flexible container (i.e. where flex-wrap is set to its default value, no-wrap) will not reflect align-content.
+
+align-self
+
+This allows the default alignment (or the one specified by align-items) to be overridden for individual flex items.
+
+flex-wrap
+
+nowrap - flex items on a single line
+wrap - multi line 

@@ -1,14 +1,14 @@
 The HTML element is everything from the start tag to the end tag:
 
- Some HTML elements have no content (like the <br> element). These elements are called empty elements. Empty elements do not have an end tag! 
+Some HTML elements have no content (like the <br> element). These elements are called empty elements. Empty elements do not have an end tag! 
 
- The <!DOCTYPE> declaration represents the document type, and helps browsers to display web pages correctly.
+The <!DOCTYPE> declaration represents the document type, and helps browsers to display web pages correctly.
 
 It must only appear once, at the top of the page (before any HTML tags). 
 
- Some HTML elements will display correctly, even if you forget the end tag: However, never rely on this! Unexpected results and errors may occur if you forget the end tag! 
+Some HTML elements will display correctly, even if you forget the end tag: However, never rely on this! Unexpected results and errors may occur if you forget the end tag! 
 
- HTML tags are not case sensitive: <P> means the same as <p>. 
+HTML tags are not case sensitive: <P> means the same as <p>. 
 
 HTML Attributes
     All HTML elements can have attributes
@@ -50,6 +50,7 @@ External - by using a <link> element to link to an external CSS file
 <p> is a block-level element, which stretches to fill the width of its container. Changing it to inline-block fixes that.
 
 to show border only for the content
+
 p.inline-border {
   display: inline-block;
   border: 1px solid black;
@@ -87,7 +88,6 @@ The <link> tag is most often used to link to external style sheets
 The <meta> element is typically used to specify the character set, page description, keywords, author of the document, and viewport settings
 The <script> element is used to define client-side JavaScripts
 The <base> element specifies the base URL and/or target for all relative URLs in a page
-
 
 The max-width property is used to set the maximum width of an element.
 
