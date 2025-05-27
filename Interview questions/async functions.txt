@@ -45,14 +45,13 @@ Implicit Return of Promises:
 
 Even if you don’t explicitly return a promise in an async function, the function will implicitly wrap the returned value in a promise.
 
-javascript
-Copy
-Edit
+
 async function foo() {
   return 42;  // Implicitly returns Promise.resolve(42)
 }
 
 foo().then(result => console.log(result)); // Output: 42
+
 Handling Errors:
 
 Just like promises, you can use try/catch blocks to handle errors in async functions.
@@ -128,6 +127,7 @@ The Promise simulates a delay (using setTimeout) and then resolves with user dat
 The data is logged to the console once the promise is resolved.
 
 Benefits of Using Async Functions:
+
 Synchronous Code Flow:
 
 With async/await, asynchronous code looks and behaves like synchronous code, which makes it easier to read and understand.
